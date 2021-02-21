@@ -1,5 +1,7 @@
 package com.mz.bitchallenge.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +16,9 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 	
-	@GetMapping(value = "/item", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ItemDTO getItem() {
-		ItemDTO itemReturned = itemService.getItem();
-		return itemReturned;
+	@GetMapping(value = "/items", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<ItemDTO> getItem() {
+		List<ItemDTO> itemsReturned = itemService.getItems();
+		return itemsReturned;
 	}
 }
