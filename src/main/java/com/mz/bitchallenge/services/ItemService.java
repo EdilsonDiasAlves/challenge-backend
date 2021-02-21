@@ -6,31 +6,23 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.client.RestTemplate;
 
-import com.google.gson.Gson;
 import com.mz.bitchallenge.dtos.ItemDTO;
 
 @Service
 public class ItemService {
 	
 	@Autowired
-	private WebClient.Builder webClientBuilder;
+	private RestTemplate restTemplate;
 	
 	@Value("${items.address}")
 	private String itemAddress;
 	
 	public List<ItemDTO> getItems() {
 		
-		String responseItems = webClientBuilder.build()
-			.get()
-			.uri(itemAddress)
-			.retrieve()
-			.bodyToMono(String.class)
-			.block();
-		
-		ItemDTO[] response = new Gson().fromJson(responseItems, ItemDTO[].class);
-		List<ItemDTO> items = Arrays.asList(response);
+		ItemDTO[] responseItems = restTemplate.getForObject(itemAddress, ItemDTO[].class);
+		List<ItemDTO> items = Arrays.asList(responseItems);
 		
 		// To convert and filter after
 		// Date date = Date.from(Instant.parse("2016-10-01T14:30:37.040Z"));
