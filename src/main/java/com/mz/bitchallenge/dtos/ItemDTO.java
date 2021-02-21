@@ -1,7 +1,5 @@
 package com.mz.bitchallenge.dtos;
 
-import java.util.Date;
-
 import lombok.Data;
 
 @Data
