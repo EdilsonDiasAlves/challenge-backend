@@ -32,3 +32,9 @@ Após o container ser iniciado, as seguintes rotas estarão disponíveis:
 
 http://localhost:8080/challenge-backend/items - Consome a API do mocky, trazendo todos os dados.
 http://localhost:8080/challenge-backend/items?begindate=03-10-2016&finaldate=04-10-2016 - Consome a api, filtrando por período.
+
+### Considerações finais
+
+A aplicação não tem um tratamento para erros, mas existem alguns mecanismos defensivos.  
+1. Caso os parâmetros sejam passados com valores incorretos a filtragem não será realizada, tendo como retorno todos os items da api.  
+2. Os filtros devem ser passados sempre em conjunto, com data inicial e data final.  Caso apenas um dos parâmetros seja informado, todos os dados serão retornados.
