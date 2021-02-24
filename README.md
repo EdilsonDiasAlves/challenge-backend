@@ -1,6 +1,6 @@
 ## challenge-backend
 
-API criada com base nos requisitos do desafio proposto [aqui](https://github.com/B2WMKTP/back/tree/main/challenge-backend-master/)
+API criada com base nos requisitos do desafio proposto.
 
 ### Iniciando a aplicação
 
